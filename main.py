@@ -1,3 +1,17 @@
+
+try:
+	file = open("config.ini", "r")
+	print(file.read())
+	file.close()
+except FileNotFoundError:
+	file = open("config.ini", "w")
+	print("api_id:")
+	id = input()
+	print("api_hash:")
+	hash = input()
+	file.write("[pyrogram]\napi_id = "+id+"\napi_hash = "+hash)
+	file.close()
+
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from requests import HTTPError
@@ -12,17 +26,25 @@ def spamg(client, message):
 	coun = 0
 	cou = message.command[1]
 	print(cou)
-	while(int(coun) != int(cou)):
-		coun = coun + 1
-		app.send_animation(message.chat.id, message.reply_to_message.animation.file_id)
+	try:
+		while(int(coun) != int(cou)):
+			coun = coun + 1
+			app.send_animation(message.chat.id, message.reply_to_message.animation.file_id)
+
+	except FloodWait as e:
+			sleep(e.x)	
 
 @app.on_message(filters.me & filters.reply & filters.command('spams', prefixes =['.']))
 def spams(client, message):
 	coun = 0
 	cou = message.command[1]
-	while(int(coun) != int(cou)):
-		coun = coun + 1
-		app.send_sticker(message.chat.id, message.reply_to_message.sticker.file_id)
+	try:
+		while(int(coun) != int(cou)):
+			coun = coun + 1
+			app.send_sticker(message.chat.id, message.reply_to_message.sticker.file_id)
+
+	except FloodWait as e:
+			sleep(e.x)
 
 @app.on_message(filters.me & filters.command('spam', prefixes =['.']))
 def spam(client, message):
