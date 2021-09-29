@@ -17,9 +17,12 @@ from pyrogram.errors import FloodWait
 from requests import HTTPError
 from time import sleep
 import requests
-
 		
 app = Client('my_account')
+
+@app.on_message(filters.command("in", prefixes="."))
+def info(client, message):
+	print (message)
 
 @app.on_message(filters.me& filters.command('spamg', prefixes =['.']) & filters.reply )
 def spamg(client, message):
@@ -52,7 +55,7 @@ def spam(client, message):
 	cou = message.command[1]
 	orig_text = message.text.split(".spam ", maxsplit=1)[1]#Убираем из полученого текста команду
 	text = message.command[2:]
-	text_p = str(text).replace('[', ' ').replace(']', ' ').replace("'", ' ').replace(",", ' ')
+	text_p = str(text).replace('[', '').replace(']', '').replace("'", '').replace(",", '')
 	while(int(coun) != int(cou)):
 		coun = coun + 1
 		app.send_message(message.chat.id, text_p)
@@ -78,5 +81,7 @@ def type(client, message):
 
 		except FloodWait as e:
 			sleep(e.x)
+
+
 
 app.run()
