@@ -1,4 +1,3 @@
-
 try:
 	file = open("config.ini", "r")
 	print(file.read())
