@@ -1,3 +1,4 @@
+
 try:
 	file = open("config.ini", "r")
 	print(file.read())
@@ -13,7 +14,6 @@ except FileNotFoundError:
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
-from requests import HTTPError
 from time import sleep
 import requests
 		
@@ -32,9 +32,7 @@ def spamg(client, message):
 		while(int(coun) != int(cou)):
 			coun = coun + 1
 			app.send_animation(message.chat.id, message.reply_to_message.animation.file_id)
-
-	except FloodWait as e:
-			sleep(e.x)	
+	
 
 @app.on_message(filters.me & filters.reply & filters.command('spams', prefixes =['.']))
 def spams(client, message):
@@ -45,8 +43,6 @@ def spams(client, message):
 			coun = coun + 1
 			app.send_sticker(message.chat.id, message.reply_to_message.sticker.file_id)
 
-	except FloodWait as e:
-			sleep(e.x)
 
 @app.on_message(filters.me & filters.command('spam', prefixes =['.']))
 def spam(client, message):
@@ -78,8 +74,6 @@ def type(client, message):
 			message.edit(tbp)
 			sleep(0.05)
 
-		except FloodWait as e:
-			sleep(e.x)
 
 
 
