@@ -14,16 +14,41 @@ except FileNotFoundError:
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
+from requests import HTTPError
 from time import sleep
 import requests
+
 		
 app = Client('my_account')
 
-@app.on_message(filters.command("in", prefixes="."))
+@app.on_message(filters.me & filters.command('info', prefixes = ['.']))
 def info(client, message):
 	print (message)
 
-@app.on_message(filters.me& filters.command('spamg', prefixes =['.']) & filters.reply )
+@app.on_message(filters.me & filters.command('kick', prefixes = ['.']))
+def kick(client, message):
+	er = message.user.first_name, " Выгнал: " + message.reply_to_message.from_user.first_name
+	app.kick_chat_member(message.chat.id, message.reply_to_message.from_user.id)
+	message.edit(text = er )
+
+
+@app.on_message(filters.me & filters.command('unban', prefixes = ['.']))
+def unban(client, message):
+	pass
+
+
+
+@app.on_message(filters.me & filters.command('block', prefixes = ['.']))
+def bl(client, message):
+	pass
+
+
+@app.on_message(filters.me & filters.command('unblock', prefixes = ['.']))
+def unbl(client, message):
+	pass
+
+
+@app.on_message(filters.me & filters.command('spamg', prefixes =['.']) & filters.reply )
 def spamg(client, message):
 	coun = 0
 	cou = message.command[1]
@@ -34,7 +59,7 @@ def spamg(client, message):
 			app.send_animation(message.chat.id, message.reply_to_message.animation.file_id)
 
 	except FloodWait as e:
-		sleep(e.x)	
+			sleep(e.x)	
 
 @app.on_message(filters.me & filters.reply & filters.command('spams', prefixes =['.']))
 def spams(client, message):
@@ -77,8 +102,8 @@ def type(client, message):
 
 			message.edit(tbp)
 			sleep(0.05)
+
 		except FloodWait as e:
 			sleep(e.x)
-
 
 app.run()
