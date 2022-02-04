@@ -1,109 +1,98 @@
-
-try:
-	file = open("config.ini", "r")
-	print(file.read())
-	file.close()
-except FileNotFoundError:
-	file = open("config.ini", "w")
-	print("api_id:")
-	id = input()
-	print("api_hash:")
-	hash = input()
-	file.write("[pyrogram]\napi_id = "+id+"\napi_hash = "+hash)
-	file.close()
-
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
-from requests import HTTPError
+
+from pyrogram.types import ChatPermissions
+
+import time
 from time import sleep
-import requests
+import random
 
-		
-app = Client('my_account')
+app = Client("my_account")
 
-@app.on_message(filters.me & filters.command('info', prefixes = ['.']))
-def info(client, message):
-	print (message)
-
-@app.on_message(filters.me & filters.command('kick', prefixes = ['.']))
-def kick(client, message):
-	er = message.user.first_name, " Выгнал: " + message.reply_to_message.from_user.first_name
-	app.kick_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-	message.edit(text = er )
-
-
-@app.on_message(filters.me & filters.command('unban', prefixes = ['.']))
-def unban(client, message):
-	pass
-
-
-
-@app.on_message(filters.me & filters.command('block', prefixes = ['.']))
-def bl(client, message):
-	pass
-
-
-@app.on_message(filters.me & filters.command('unblock', prefixes = ['.']))
-def unbl(client, message):
-	pass
-
-
-@app.on_message(filters.me & filters.command('spamg', prefixes =['.']) & filters.reply )
-def spamg(client, message):
-	coun = 0
-	cou = message.command[1]
-	print(cou)
-	try:
-		while(int(coun) != int(cou)):
-			coun = coun + 1
-			app.send_animation(message.chat.id, message.reply_to_message.animation.file_id)
-
-	except FloodWait as e:
-			sleep(e.x)	
-
-@app.on_message(filters.me & filters.reply & filters.command('spams', prefixes =['.']))
-def spams(client, message):
-	coun = 0
-	cou = message.command[1]
-	try:
-		while(int(coun) != int(cou)):
-			coun = coun + 1
-			app.send_sticker(message.chat.id, message.reply_to_message.sticker.file_id)
-
-	except FloodWait as e:
-			sleep(e.x)
-
-@app.on_message(filters.me & filters.command('spam', prefixes =['.']))
-def spam(client, message):
-	coun = 0
-	cou = message.command[1]
-	orig_text = message.text.split(".spam ", maxsplit=1)[1]#Убираем из полученого текста команду
-	text = message.command[2:]
-	text_p = str(text).replace('[', '').replace(']', '').replace("'", '').replace(",", '')
-	while(int(coun) != int(cou)):
-		coun = coun + 1
-		app.send_message(message.chat.id, text_p)
-
-@app.on_message(filters.me & filters.command('type', prefixes =['.']))#Задаем филтер чтоб принимал только сообщение клиента и филтрацию на команду
-def type(client, message):
-	orig_text = message.text.split(".type ", maxsplit=1)[1]#Убираем из полученого текста команду
+# Команда type
+@app.on_message(filters.command("type", prefixes=".") & filters.me)
+def type(_, msg):
+	orig_text = msg.text.split(".type ", maxsplit=1)[1]
 	text = orig_text
-	tbp = ''
-	typing_symbol = "¶"#Символ для пичатанья
+	tbp = "" # to be printed
+	typing_symbol = "▒"
 
 	while(tbp != orig_text):
-		#повторяем пока tbp е будет равно оригинальному тексту
 		try:
-			message.edit(tbp + typing_symbol)
-			sleep(0.05)
+			msg.edit(tbp + typing_symbol)
+			sleep(0.05) # 50 ms
 
 			tbp = tbp + text[0]
 			text = text[1:]
 
-			message.edit(tbp)
+			msg.edit(tbp)
 			sleep(0.05)
 
 		except FloodWait as e:
 			sleep(e.x)
+
+# Команда взлома пентагона
+@app.on_message(filters.command("hack", prefixes=".") & filters.me)
+def hack(_, msg):
+	perc = 0
+
+	while(perc < 100):
+		try:
+			text = "👮‍ Взлом пентагона в процессе ..." + str(perc) + "%"
+			msg.edit(text)
+
+			perc += random.randint(1, 3)
+			sleep(0.1)
+
+		except FloodWait as e:
+			sleep(e.x)
+
+	msg.edit("🟢 Пентагон успешно взломан!")
+	sleep(3)
+
+	msg.edit("👽 Поиск секретных данных об НЛО ...")
+	perc = 0
+
+	while(perc < 100):
+		try:
+			text = "👽 Поиск секретных данных об НЛО ..." + str(perc) + "%"
+			msg.edit(text)
+
+			perc += random.randint(1, 5)
+			sleep(0.15)
+
+		except FloodWait as e:
+			sleep(e.x)
+
+	msg.edit("🦖 Найдены данные о существовании динозавров на земле!")
+
+@app.on_message(filters.command("thanos", prefixes=".") & filters.me)
+def thanos(_, msg):
+    chat = msg.text.split(".thanos ", maxsplit=1)[1]
+
+    members = [
+        x
+        for x in app.iter_chat_members(chat)
+        if x.status not in ("administrator", "creator")
+    ]
+
+    random.shuffle(members)
+
+    app.send_message(chat, "Щелчок Таноса ... *щёлк*")
+
+    for i in range(len(members) // 2):
+        try:
+            app.restrict_chat_member(
+                chat_id=chat,
+                user_id=members[i].user.id,
+                permissions=ChatPermissions(),
+                until_date=int(time.time() + 86400),
+            )
+            app.send_message(chat, "Исчез " + members[i].user.first_name)
+        except FloodWait as e:
+            print("> waiting", e.x, "seconds.")
+            time.sleep(e.x)
+
+    app.send_message(chat, "Но какой ценой?")
 
 app.run()
