@@ -21,6 +21,14 @@ import random
 
 heart = ['💙', '💚', '❤️', '💜', '🧡', '💛']
 
+commands = """
+.spam 1 2 - Где 1 это число отправлений, а 2 это текст (Обычная отправка сообщений с указаным текстом)
+.spamg 1 - 1 это число отправлений, должна быть ответом на гифку (спамит гифками)
+.spams 1 - 1 это число отправлений, должна быть ответом на стикер (спамит стикерами)
+.type 2 - 2 это текст (Красиво печатает текст)
+.love - анимация сердечка (Как найду автора идеи отмечу его тут)
+"""
+
 heart_ani_1 = f"""
 🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍
 🤍🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤🖤🤍
@@ -115,6 +123,11 @@ heart_ani_12 = f"""
 
 		
 app = Client('my_account')
+
+@app.on_message(filters.me & filters.command('help', prefixes = ['.']))
+def help(client, message):
+	app.edit_message_text(message.chat.id, message.message_id, commands)
+
 
 @app.on_message(filters.me & filters.command('info', prefixes = ['.']))
 def info(client, message):
@@ -215,7 +228,6 @@ def love(client, message):
 	app.edit_message_text(message.chat.id, message.message_id, heart_ani_2)
 	app.edit_message_text(message.chat.id, message.message_id, heart_ani_1)
 	s = 0
-	print(message)
 	while s != 10:
 		heart_2 = f"""
 🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤🖤🤍🤍
@@ -232,7 +244,6 @@ def love(client, message):
 """
 		app.edit_message_text(message.chat.id, message.message_id, heart_2)
 		s = s + 1
-	print(1)
 	app.edit_message_text(message.chat.id, message.message_id, heart_ani_1)
 	app.edit_message_text(message.chat.id, message.message_id, heart_ani_2)
 	app.edit_message_text(message.chat.id, message.message_id, heart_ani_3)
