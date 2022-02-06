@@ -17,6 +17,101 @@ from pyrogram.errors import FloodWait
 from requests import HTTPError
 from time import sleep
 import requests
+import random
+
+heart = ['💙', '💚', '❤️', '💜', '🧡', '💛']
+
+heart_ani_1 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤🖤🤍
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍
+🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍
+🤍🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍🤍
+🤍🤍🤍🤍🤍🤍🖤{random.choice(heart)}🖤🤍🤍🤍🤍
+"""
+heart_ani_2 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤🖤
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍
+🤍🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍
+"""
+heart_ani_3 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+"""
+heart_ani_4 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍🤍🖤
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+"""
+heart_ani_5 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍🤍
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+"""
+heart_ani_6 = f"""
+🤍🤍🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤🤍🤍
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+"""
+heart_ani_7 = f"""
+🤍🤍🤍🤍🤍🤍
+🤍🤍🤍🖤🖤🖤
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}
+"""
+heart_ani_8 = f"""
+🤍🤍🤍🤍
+🤍🤍🤍🖤
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}
+🤍🖤{random.choice(heart)}{random.choice(heart)}
+"""
+heart_ani_9 = f"""
+🤍🤍🤍
+🤍🤍🤍
+🤍🤍🖤
+"""
+heart_ani_10 = f"""
+🤍🤍
+🤍🤍
+"""
+heart_ani_11 = f"""
+🤍⠀
+"""
+heart_ani_12 = f"""
+🤍 I love you!
+"""
 
 		
 app = Client('my_account')
@@ -105,5 +200,50 @@ def type(client, message):
 
 		except FloodWait as e:
 			sleep(e.x)
+
+@app.on_message(filters.me & filters.command('love', prefixes = ['.']))
+def love(client, message):
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_11)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_10)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_9)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_8)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_7)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_6)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_5)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_4)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_3)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_2)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_1)
+	s = 0
+	print(message)
+	while s != 10:
+		heart_2 = f"""
+🤍🤍🖤🖤🖤🤍🤍🤍🖤🖤🖤🤍🤍
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍
+🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤
+🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍
+🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍
+🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍🤍
+🤍🤍🤍🤍🖤{random.choice(heart)}{random.choice(heart)}{random.choice(heart)}🖤🤍🤍🤍🤍
+🤍🤍🤍🤍🤍🖤{random.choice(heart)}🖤🤍🤍🤍🤍🤍
+🤍🤍🤍🤍🤍🤍🖤🤍🤍🤍🤍🤍🤍
+"""
+		app.edit_message_text(message.chat.id, message.message_id, heart_2)
+		s = s + 1
+	print(1)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_1)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_2)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_3)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_4)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_5)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_6)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_7)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_8)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_9)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_10)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_11)
+	app.edit_message_text(message.chat.id, message.message_id, heart_ani_12)
 
 app.run()
